@@ -133,3 +133,11 @@ The fetch request now successfully leaves the WebView and reaches the backend ov
    adb shell am start -n ai.bhushakti.app/.MainActivity
    ```
 
+
+
+## 11. Render Deployment (Phase 23)
+The backend is prepared for deployment to Render.
+- **Root Directory**: ackend
+- **Environment Variables Required**: NODE_ENV, PORT, MONGODB_URI, JWT_SECRET, FRONTEND_URL, DEVICE_API_KEY, ML_SERVICE_URL.
+- **Status**: Pending manual interaction via the Render Dashboard to link the GitHub repository and supply the production environment variables safely.
+
