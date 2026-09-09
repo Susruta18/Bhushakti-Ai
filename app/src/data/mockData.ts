@@ -1,0 +1,217 @@
+// =========================================================
+// BHUSHAKTI AI — Central Mock Data
+// Simulated demonstration data — NOT real measurements
+// =========================================================
+
+import type { User, RiskPrediction, ResponsePriority, ResponsePlan } from '../types';
+
+export const MOCK_USER: User = {
+  id: 'user-001',
+  name: 'Demo Authority Officer',
+  email: 'officer@darjeeling.gov.in',
+  mobile: '+91-9800000000',
+  role: 'authority',
+  region: 'Darjeeling Hills',
+  organization: 'Disaster Management Authority',
+  avatarUrl: undefined,
+  lastLogin: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+  notificationsEnabled: true,
+  alertPreferences: [
+    { level: 'critical', enabled: true },
+    { level: 'high', enabled: true },
+    { level: 'moderate', enabled: true },
+    { level: 'low', enabled: false },
+  ],
+};
+
+export const MOCK_RISK_TREND = [
+  { time: 'Yesterday 00:00', probability: 35 },
+  { time: 'Yesterday 06:00', probability: 38 },
+  { time: 'Yesterday 12:00', probability: 42 },
+  { time: 'Yesterday 18:00', probability: 51 },
+  { time: 'Today 00:00', probability: 58 },
+  { time: 'Today 06:00', probability: 64 },
+  { time: 'Today 12:00', probability: 71 },
+  { time: 'Now', probability: 78 },
+];
+
+export const MOCK_PREDICTION: RiskPrediction = {
+  id: 'pred-001',
+  location: 'Zone A — Darjeeling Hills',
+  probability: 78,
+  riskLevel: 'high',
+  riskFactors: [
+    { name: 'Rainfall', value: '84', unit: 'mm', level: 'high', icon: 'CloudRain' },
+    { name: 'Soil Moisture', value: '71', unit: '%', level: 'high', icon: 'Droplets' },
+    { name: 'Slope', value: '38', unit: '°', level: 'moderate', icon: 'Mountain' },
+    { name: 'Historical Susceptibility', value: 'High', unit: '', level: 'high', icon: 'History' },
+    { name: 'Land Use', value: 'Mixed Forest', unit: '', level: 'low', icon: 'Trees' },
+  ],
+  recommendedActions: [
+    'Increase structural monitoring frequency',
+    'Inspect primary access roads for damage',
+    'Verify local field officer reports',
+    'Prepare emergency resource deployment',
+    'Update incident status every 2 hours',
+  ],
+  generatedAt: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
+  validUntil: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString(),
+  isSimulated: true,
+};
+
+export const MOCK_RESPONSE_PRIORITIES: ResponsePriority[] = [
+  {
+    id: 'resp-001',
+    rank: 1,
+    zoneId: 'zone-d',
+    zoneName: 'Zone D',
+    riskLevel: 'critical',
+    probability: 91,
+    populationExposure: 630,
+    criticalAssets: 1,
+    accessibilityScore: 35,
+    priorityScore: 94,
+    actionRequired: 'Immediate',
+    estimatedDeployment: '< 30 minutes',
+  },
+  {
+    id: 'resp-002',
+    rank: 2,
+    zoneId: 'zone-a',
+    zoneName: 'Zone A',
+    riskLevel: 'high',
+    probability: 78,
+    populationExposure: 4820,
+    criticalAssets: 6,
+    accessibilityScore: 65,
+    priorityScore: 87,
+    actionRequired: 'Urgent',
+    estimatedDeployment: '< 1 hour',
+  },
+  {
+    id: 'resp-003',
+    rank: 3,
+    zoneId: 'zone-b',
+    zoneName: 'Zone B',
+    riskLevel: 'high',
+    probability: 65,
+    populationExposure: 2340,
+    criticalAssets: 3,
+    accessibilityScore: 72,
+    priorityScore: 74,
+    actionRequired: 'Monitor',
+    estimatedDeployment: '< 2 hours',
+  },
+  {
+    id: 'resp-004',
+    rank: 4,
+    zoneId: 'zone-c',
+    zoneName: 'Zone C',
+    riskLevel: 'moderate',
+    probability: 45,
+    populationExposure: 1120,
+    criticalAssets: 2,
+    accessibilityScore: 85,
+    priorityScore: 52,
+    actionRequired: 'Standby',
+    estimatedDeployment: 'On request',
+  },
+];
+
+export const MOCK_RESPONSE_PLANS: ResponsePlan[] = [
+  {
+    id: 'plan-001',
+    zoneId: 'zone-d',
+    zoneName: 'Zone D',
+    riskLevel: 'critical',
+    createdAt: new Date(Date.now() - 30 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
+    status: 'active',
+    assignedTeam: 'Field Team Alpha',
+    actions: [
+      { id: 'pa1', label: 'Inspect primary access road', completed: true, category: 'inspection', priority: 'immediate' },
+      { id: 'pa2', label: 'Verify field officer report', completed: true, category: 'inspection', priority: 'immediate' },
+      { id: 'pa3', label: 'Contact local authority', completed: false, category: 'communication', priority: 'immediate' },
+      { id: 'pa4', label: 'Prepare evacuation route', completed: false, category: 'evacuation', priority: 'high' },
+      { id: 'pa5', label: 'Monitor rainfall sensors', completed: false, category: 'monitoring', priority: 'high' },
+      { id: 'pa6', label: 'Update incident status report', completed: false, category: 'reporting', priority: 'normal' },
+    ],
+  },
+  {
+    id: 'plan-002',
+    zoneId: 'zone-a',
+    zoneName: 'Zone A',
+    riskLevel: 'high',
+    createdAt: new Date(Date.now() - 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 20 * 60 * 1000).toISOString(),
+    status: 'active',
+    actions: [
+      { id: 'pb1', label: 'Inspect critical infrastructure', completed: false, category: 'inspection', priority: 'immediate' },
+      { id: 'pb2', label: 'Alert downstream communities', completed: true, category: 'communication', priority: 'immediate' },
+      { id: 'pb3', label: 'Pre-position resources at staging area', completed: false, category: 'evacuation', priority: 'high' },
+      { id: 'pb4', label: 'Monitor soil moisture sensors', completed: false, category: 'monitoring', priority: 'high' },
+      { id: 'pb5', label: 'File hourly situation report', completed: false, category: 'reporting', priority: 'normal' },
+    ],
+  },
+  {
+    id: 'plan-003',
+    zoneId: 'zone-b',
+    zoneName: 'Zone B',
+    riskLevel: 'high',
+    createdAt: new Date(Date.now() - 90 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 45 * 60 * 1000).toISOString(),
+    status: 'active',
+    actions: [
+      { id: 'pc1', label: 'Cordon off rockfall area on NH-10', completed: true, category: 'inspection', priority: 'immediate' },
+      { id: 'pc2', label: 'Notify highway authority', completed: true, category: 'communication', priority: 'immediate' },
+      { id: 'pc3', label: 'Set up bypass route signage', completed: false, category: 'evacuation', priority: 'high' },
+      { id: 'pc4', label: 'Monitor upper slope for further movement', completed: false, category: 'monitoring', priority: 'high' },
+    ],
+  },
+  {
+    id: 'plan-004',
+    zoneId: 'zone-c',
+    zoneName: 'Zone C',
+    riskLevel: 'moderate',
+    createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+    updatedAt: new Date(Date.now() - 60 * 60 * 1000).toISOString(),
+    status: 'draft',
+    actions: [
+      { id: 'pd1', label: 'Schedule drainage inspection', completed: false, category: 'inspection', priority: 'normal' },
+      { id: 'pd2', label: 'Issue community advisory', completed: false, category: 'communication', priority: 'normal' },
+      { id: 'pd3', label: 'Continue 24h monitoring', completed: false, category: 'monitoring', priority: 'normal' },
+    ],
+  },
+];
+
+export const MOCK_ANALYTICS_DATA = {
+  riskHistory: MOCK_RISK_TREND,
+  rainfallData: [
+    { time: '00:00', value: 12, riskProbability: 42 },
+    { time: '02:00', value: 18, riskProbability: 45 },
+    { time: '04:00', value: 28, riskProbability: 51 },
+    { time: '06:00', value: 35, riskProbability: 58 },
+    { time: '08:00', value: 42, riskProbability: 64 },
+    { time: '10:00', value: 58, riskProbability: 69 },
+    { time: '12:00', value: 67, riskProbability: 72 },
+    { time: '14:00', value: 72, riskProbability: 74 },
+    { time: '16:00', value: 78, riskProbability: 76 },
+    { time: '18:00', value: 82, riskProbability: 77 },
+    { time: '20:00', value: 84, riskProbability: 78 },
+  ],
+  alertHistory: [
+    { date: '8/24', critical: 1, high: 2, moderate: 3 },
+    { date: '8/25', critical: 0, high: 3, moderate: 2 },
+    { date: '8/26', critical: 2, high: 1, moderate: 4 },
+    { date: '8/27', critical: 1, high: 4, moderate: 1 },
+    { date: '8/28', critical: 0, high: 2, moderate: 3 },
+    { date: '8/29', critical: 3, high: 2, moderate: 2 },
+    { date: '8/30', critical: 2, high: 3, moderate: 2 },
+  ],
+  riskDistribution: [
+    { level: 'Critical', count: 1, percentage: 20 },
+    { level: 'High', count: 2, percentage: 40 },
+    { level: 'Moderate', count: 1, percentage: 20 },
+    { level: 'Low', count: 1, percentage: 20 },
+  ],
+};

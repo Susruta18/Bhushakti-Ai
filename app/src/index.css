@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   BHUSHAKTI AI — Global Styles
+   Faithful to Stitch Design System
+   ========================================================= */
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0b1326;
+    color: #dae2fd;
+    font-size: 14px;
+    line-height: 20px;
+    overflow-x: hidden;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: #1e293b;
+    color: #dae2fd;
+  }
+}
+
+@layer components {
+  /* ---- Scrollbar hiding ---- */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ---- Map dot pattern (from Stitch home screen) ---- */
+  .bg-map-pattern {
+    background-image: radial-gradient(
+      circle at 2px 2px,
+      rgba(188, 199, 222, 0.05) 1px,
+      transparent 0
+    );
+    background-size: 24px 24px;
+  }
+
+  /* ---- Ambient glow effect (from Stitch alerts screen) ---- */
+  .ambient-glow::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 15% 50%, rgba(28, 41, 59, 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(28, 41, 59, 0.3) 0%, transparent 50%);
+  }
+
+  /* ---- Card base ---- */
+  .card {
+    @apply bg-surface-container border border-outline-variant rounded-xl;
+  }
+
+  /* ---- Risk accent bar ---- */
+  .risk-bar-critical { @apply bg-error; }
+  .risk-bar-high { @apply bg-tertiary; }
+  .risk-bar-moderate { @apply bg-secondary; }
+  .risk-bar-low { @apply bg-risk-low; }
+
+  /* ---- Active nav pill (from Stitch) ---- */
+  .nav-active {
+    @apply bg-secondary-container text-on-secondary-container rounded-full;
+  }
+
+  /* ---- Gauge SVG transition ---- */
+  .gauge-circle {
+    transition: stroke-dasharray 1s ease-out, stroke-dashoffset 1s ease-out;
+  }
+
+  /* ---- Bottom sheet ---- */
+  .bottom-sheet {
+    @apply bg-surface-container border-t border-outline-variant rounded-t-[20px]
+           shadow-[0_-8px_30px_rgba(0,0,0,0.6)];
+  }
+
+  /* ---- Sticky action bar gradient ---- */
+  .action-bar-gradient {
+    background: linear-gradient(to top, #0b1326 60%, transparent);
+  }
+
+  /* ---- Filter chip ---- */
+  .chip-active {
+    @apply bg-primary-container text-on-primary-container border-primary/30;
+  }
+  .chip-inactive {
+    @apply bg-surface-container text-on-surface-variant border-outline-variant;
+  }
+
+  /* ---- Primary button (Stitch style) ---- */
+  .btn-primary {
+    @apply w-full h-12 bg-on-background text-background font-semibold text-xs tracking-widest
+           uppercase rounded-lg flex items-center justify-center gap-2
+           hover:opacity-90 active:scale-[0.98] transition-all duration-100;
+  }
+
+  /* ---- Secondary button ---- */
+  .btn-secondary {
+    @apply h-12 border border-outline-variant text-on-surface bg-transparent
+           hover:bg-surface-variant rounded-lg font-semibold text-xs tracking-widest
+           uppercase flex items-center justify-center gap-2
+           active:scale-[0.98] transition-all duration-100;
+  }
+
+  /* ---- Alert item card (Stitch style) ---- */
+  .alert-card {
+    @apply relative w-full rounded-xl bg-surface-container-high border border-surface-container-highest
+           p-4 flex items-start gap-4 active:scale-[0.98] cursor-pointer overflow-hidden;
+  }
+}
+
+@layer utilities {
+  /* Safe area padding for mobile */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  /* Mobile max width container */
+  .mobile-container {
+    @apply max-w-[430px] mx-auto w-full;
+  }
+
+  /* Typography shortcuts */
+  .text-headline-lg {
+    font-size: 28px;
+    line-height: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .text-headline-md {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .text-headline-sm {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+  .text-body-lg {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .text-body-md {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-label-md {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .text-label-sm {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 500;
+  }
+}

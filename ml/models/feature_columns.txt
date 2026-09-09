@@ -1,0 +1,4 @@
+rainfall24h
+elevation
+slope
+soilMoisture
