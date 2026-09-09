@@ -1,2 +1,0 @@
-https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/SRTMGL1.003/N25E095.SRTMGL1.hgt/N25E095.SRTMGL1.hgt.zip
-https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/SRTMGL1.003/N28E094.SRTMGL1.hgt/N28E094.SRTMGL1.hgt.zip
