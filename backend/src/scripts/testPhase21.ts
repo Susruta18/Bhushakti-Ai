@@ -15,7 +15,7 @@ async function runPhase21Tests() {
   try {
     console.log('--- Step 2: Authentication (Logic verification) ---');
     // Auth logic generates JWT with role.
-    const token = generateAccessToken({ userId: new ObjectId().toString(), email: 'auth@test.com', role: 'AUTHORITY' });
+    const token = generateAccessToken({ userId: new ObjectId().toString(), role: 'AUTHORITY' });
     if (token) {
       console.log('✅ JWT generation works');
     } else {
