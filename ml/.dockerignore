@@ -1,0 +1,10 @@
+.venv
+__pycache__
+data
+evaluation
+notebooks
+preprocessing
+reports
+training
+*.pyc
+.env

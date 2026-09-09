@@ -23,3 +23,12 @@ services:
         sync: false
       - key: ML_API_URL
         value: http://localhost:8000
+
+  - type: web
+    name: bhushakti-ai-ml
+    runtime: docker
+    rootDir: ml
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8000
