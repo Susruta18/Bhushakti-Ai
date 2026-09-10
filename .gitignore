@@ -1,1 +1,6 @@
 ﻿ml/data/
+
+# Exclude corrupted large binaries and reports
+ml/data/*.exe
+ml/data/*.pdf
+ml/data/*.nc4
