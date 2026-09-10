@@ -4,7 +4,7 @@
 // Currently uses mock data
 // =========================================================
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'https://bhushakti-ai-backend.onrender.com/api';
 
 // Simulated network delay for realistic UX
 const MOCK_DELAY = 600;

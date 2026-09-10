@@ -152,11 +152,7 @@ export const predictRisk = async (
         res.status(502).json({
             success: false,
             message:
-                'Unable to reach the BHUSHAKTI AI ML service',
-            error:
-                error instanceof Error
-                    ? error.message
-                    : 'Unknown error',
+                'Unable to reach the BHUSHAKTI AI ML service. Please try again later.',
         });
     }
 };

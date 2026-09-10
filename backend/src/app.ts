@@ -38,17 +38,18 @@ app.use(cors({
     if (!origin) return callback(null, true);
 
     const allowed = [
-      // Web dev server
+      // Production Render frontend
+      'https://bhushakti-ai-frontend.onrender.com',
+      // Backend configured FRONTEND_URL (for flexibility)
       config.frontendUrl,
       // Capacitor Android WebView — serves from https://localhost (HTTPS)
       'https://localhost',
       'capacitor://localhost',
       'http://localhost',
-      // LAN IP — Android phone hitting the dev PC backend directly
-      'http://192.168.1.103:3000',
-      'http://192.168.1.103:5000',
-    ];
-
+      // Local web dev server
+      'http://localhost:3000',
+      'http://localhost:5173',
+    ].filter(Boolean);
 
     if (allowed.includes(origin)) {
       callback(null, true);
@@ -58,31 +59,44 @@ app.use(cors({
         console.warn(`[CORS] Unexpected origin in dev: ${origin} — allowing`);
         callback(null, true);
       } else {
-        callback(new Error(`CORS: origin ${origin} not allowed`));
+        // Pass null (not an Error) to deny without cascading to error handler
+        // The cors middleware will respond with a 403 and omit ACAO header
+        callback(null, false);
       }
     }
   },
   credentials: true
 }));
 
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
 
 app.use(
   express.urlencoded({
-    extended: true
+    extended: true,
+    limit: '10kb'
   })
 );
 
-// Global Rate Limiting
+// Global Rate Limiting — 200 requests per 15 minutes
 const globalLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 200, // Limit each IP to 200 requests per `window`
+  windowMs: 15 * 60 * 1000,
+  max: 200,
   message: { success: false, message: 'Too many requests from this IP, please try again after 15 minutes' },
   standardHeaders: true,
   legacyHeaders: false,
 });
 
+// Auth Rate Limiting — stricter: 20 login attempts per 15 minutes
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: { success: false, message: 'Too many login attempts, please try again later' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 app.use('/api/', globalLimiter);
+app.use('/api/auth/', authLimiter);
 
 if (config.nodeEnv === 'development') {
   app.use(morgan('dev'));

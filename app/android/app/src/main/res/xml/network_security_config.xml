@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  Network Security Config — DEVELOPMENT ONLY
-  Permits cleartext HTTP to the local LAN backend (192.168.1.103:5000)
-  for real-device testing over the local network.
-  This file must be replaced with a production config (HTTPS-only) before
-  any production release.
+  Network Security Config — PRODUCTION
 -->
 <network-security-config>
-    <!-- Allow cleartext HTTP only to the specific dev backend LAN IP -->
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="false">192.168.1.103</domain>
-    </domain-config>
-    <!-- All other traffic uses system defaults (cleartext blocked on API 28+) -->
+    <!-- All traffic uses system defaults (cleartext blocked on API 28+) -->
     <base-config cleartextTrafficPermitted="false" />
 </network-security-config>

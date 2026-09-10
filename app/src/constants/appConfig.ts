@@ -7,7 +7,7 @@ export const APP_CONFIG = {
   tagline: 'Landslide Intelligence & Early Warning',
   version: import.meta.env.VITE_APP_VERSION || '1.0.0',
   env: import.meta.env.VITE_APP_ENV || 'development',
-  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api',
+  apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'https://bhushakti-ai-backend.onrender.com/api',
 
   // Demo region
   defaultRegion: 'Darjeeling Hills',
