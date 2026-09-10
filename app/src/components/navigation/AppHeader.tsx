@@ -22,8 +22,14 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ title = 'BHUSHAKTI AI' }) 
         <Grid2X2 className="w-6 h-6" />
       </button>
 
-      {/* Title */}
-      <div className="text-center flex-1">
+      {/* Title with logo */}
+      <div className="text-center flex-1 flex items-center justify-center gap-2">
+        <img
+          src="/bhushakti-logo.png"
+          alt="BHUSHAKTI AI"
+          className="w-7 h-7 rounded-md object-cover"
+          draggable={false}
+        />
         <h1 className="text-headline-md font-bold tracking-tight text-primary">{title}</h1>
       </div>
 

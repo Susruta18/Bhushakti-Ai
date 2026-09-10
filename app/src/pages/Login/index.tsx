@@ -37,15 +37,14 @@ export default function LoginPage() {
       <main className="w-full max-w-[390px] mx-auto flex flex-col items-center gap-6">
         {/* Logo / Header */}
         <header className="flex flex-col items-center text-center gap-2 w-full">
-          <div className="w-28 h-28 mb-2 rounded-xl overflow-hidden bg-surface-container flex items-center justify-center border border-outline-variant shadow-lg">
-            {/* Logo mark */}
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary-container to-surface-container-high">
-              <svg viewBox="0 0 80 80" className="w-16 h-16">
-                <polygon points="40,8 72,64 8,64" fill="none" stroke="#bcc7de" strokeWidth="4" strokeLinejoin="round"/>
-                <polygon points="40,24 60,60 20,60" fill="#1e293b" stroke="#bcc7de" strokeWidth="2" strokeLinejoin="round"/>
-                <circle cx="40" cy="44" r="6" fill="#ffb4ab"/>
-              </svg>
-            </div>
+          <div className="w-28 h-28 mb-2 rounded-xl overflow-hidden shadow-lg">
+            {/* BHUSHAKTI AI official logo */}
+            <img
+              src="/bhushakti-logo.png"
+              alt="BHUSHAKTI AI"
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
           </div>
           <h1 className="text-[28px] font-bold tracking-tight text-primary leading-tight">BHUSHAKTI AI</h1>
           <p className="text-body-md text-on-surface-variant">Landslide Intelligence &amp; Early Warning</p>
